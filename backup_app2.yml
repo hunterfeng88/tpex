@@ -21,9 +21,16 @@
         dest: "{{ backup_dir }}/myappbackup.tar.gz"
         format: gz
 
-    - name: Copy archive to remote server
-      copy:
+
+    - name: Copy archive to EE 
+      fetch:
         src: "{{ backup_dir }}/myappbackup.tar.gz"
         dest: "{{ remote_dir }}/myappbackup.tar.gz"
+        flat: yes
+      
+    - name: Copy archive from ee to remote server
+      copy:
+        src: "{{ remote_dir }}/myappbackup.tar.gz"
+        dest: "/home/student/backup/myappbackup.tar.gz"
         remote_src: yes
       delegate_to: "{{ remote_server }}"
