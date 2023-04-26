@@ -25,4 +25,5 @@
       copy:
         src: "{{ backup_dir }}/myappbackup.tar.gz"
         dest: "{{ remote_dir }}/myappbackup.tar.gz"
+        remote_src: yes
       delegate_to: "{{ remote_server }}"
