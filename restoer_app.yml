@@ -5,31 +5,22 @@
 
   vars:
     backup_dir: /backup
-    local_dir: /opt/myapp
+    local_dir: /opt/myapp1
     remote_dir: /backup_remote
     remote_server: ansible-1
 
   tasks:
-    - name: Create backup directory if not exist
+    - name: Create restore directory if not exist
       file:
-        path: "{{ backup_dir }}"
+        path: "{{ local_dir }}"
         state: directory
 
-    - name: Create local archive
-      archive:
-        path: "{{ local_dir }}"
-        dest: "{{ backup_dir }}/myappbackup.tar.gz"
-        format: gz
 
-
-    - name: Copy archive to EE 
+    - name: Copy archive from ansible-1 to remote server
       fetch:
-        src: "{{ backup_dir }}/myappbackup.tar.gz"
-        dest: /tmp/myappbackup.tar.gz
+        src: /home/student/backup/myappbackup.tar.gz
+        dest: "{{ local_dir }}"/myappbackup.tar.gz
         flat: yes
-      
-    - name: Copy archive from ee to remote server
-      copy:
-        src: /tmp/myappbackup.tar.gz
-        dest: "/home/student/backup/myappbackup.tar.gz"
       delegate_to: "{{ remote_server }}"
+      
+    
