@@ -9,6 +9,7 @@
         format: gz
 
     - name: Copy /opt/myapp to backup
+      hosts: localhost
       fetch:
         src: /backup/myapp.tart.gz
         dest: /home/student/backup
