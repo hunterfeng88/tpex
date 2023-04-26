@@ -11,7 +11,7 @@
     - name: Copy /opt/myapp to backup
       fetch:
         src: /backup/myapp.tart.gz
-        dest: /backup/myapp.tart.gz
+        dest: /backup1/myapp.tart.gz
         flat: yes
         
   
