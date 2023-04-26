@@ -1,0 +1,35 @@
+---
+- name: Restore files to remote server
+  hosts: node1
+  gather_facts: false
+
+  vars:
+    backup_dir: /backup
+    local_dir: /opt/myapp
+    remote_dir: /backup_remote
+    remote_server: ansible-1
+
+  tasks:
+    - name: Create backup directory if not exist
+      file:
+        path: "{{ backup_dir }}"
+        state: directory
+
+    - name: Create local archive
+      archive:
+        path: "{{ local_dir }}"
+        dest: "{{ backup_dir }}/myappbackup.tar.gz"
+        format: gz
+
+
+    - name: Copy archive to EE 
+      fetch:
+        src: "{{ backup_dir }}/myappbackup.tar.gz"
+        dest: /tmp/myappbackup.tar.gz
+        flat: yes
+      
+    - name: Copy archive from ee to remote server
+      copy:
+        src: /tmp/myappbackup.tar.gz
+        dest: "/home/student/backup/myappbackup.tar.gz"
+      delegate_to: "{{ remote_server }}"
