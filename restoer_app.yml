@@ -26,5 +26,8 @@
       copy:
         src: /tmp/myappbackup.tar.gz
         dest: "{{ local_dir }}"
-      
-
+        
+    - name: Extract foo.tgz into /var/lib/foo
+      unarchive:
+        src: "{{ local_dir }}/myappbackup.tar.gz"
+        dest: "{{ local_dir }}"
