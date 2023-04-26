@@ -22,7 +22,7 @@
         flat: yes
       delegate_to: "{{ remote_server }}"
       
-       - name: Copy archive from ee to remote server
+    - name: Copy archive from ee to remote server
       copy:
         src: /tmp/myappbackup.tar.gz
         dest: "{{ local_dir }}"
