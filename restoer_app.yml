@@ -31,3 +31,4 @@
       unarchive:
         src: "{{ local_dir }}/myappbackup.tar.gz"
         dest: "{{ local_dir }}"
+      delegate_to: "{{ node1 }}"
