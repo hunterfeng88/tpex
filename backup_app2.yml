@@ -5,8 +5,8 @@
 
   vars:
     backup_dir: /opt/myapp
-    local_dir: /bakcup
-    remote_dir: /bacup_remote
+    local_dir: /bakckup
+    remote_dir: /backup_remote
     remote_server: node2
 
   tasks:
