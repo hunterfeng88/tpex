@@ -9,9 +9,10 @@
         format: gz
 
     - name: Copy /opt/myapp to backup
-      fetch:
+      copy:
         src: /backup/myapp.tar.gz
         dest: /home/student/backup
+        delegate_to: ansible-1
 
         
   
