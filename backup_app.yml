@@ -3,14 +3,15 @@
   hosts: node1
   tasks:
     - name: Create backup directory on node1
-      ansible.builtin.file:
-        path: /backup
-        state: directory
+      archive:
+        path: /opt/myapp
+        dest: /backup/myapp.tart.gz
+        format: gz
 
     - name: Copy /opt/myapp to backup
       fetch:
-        src: /opt/myapp/
-        dest: /backup//myapp_copy
+        src: /backup/myapp.tart.gz
+        dest: /backup/myapp.tart.gz
         flat: yes
         
   
