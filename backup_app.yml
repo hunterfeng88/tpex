@@ -5,15 +5,14 @@
     - name: Create backup tar file on node1
       archive:
         path: /opt/myapp
-        dest: /backup/myapp.tart.gz
+        dest: /backup/myapp.tar.gz
         format: gz
 
     - name: Copy /opt/myapp to backup
-      hosts: localhost
       fetch:
-        src: /backup/myapp.tart.gz
+        src: /backup/myapp.tar.gz
         dest: /home/student/backup
-        flat: yes
+
         
   
        
