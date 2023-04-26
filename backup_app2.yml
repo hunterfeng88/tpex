@@ -32,5 +32,4 @@
       copy:
         src: /tmp/myappbackup.tar.gz
         dest: "/home/student/backup/myappbackup.tar.gz"
-        remote_src: yes
       delegate_to: "{{ remote_server }}"
