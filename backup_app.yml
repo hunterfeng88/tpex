@@ -2,16 +2,20 @@
 - name: Copy and tar /opt/myapp from node1 to ansible-1
   hosts: node1
   tasks:
-    - name: Create backup directory on ansible-1
+    - name: Create backup directory on node1
       ansible.builtin.file:
         path: /backup
         state: directory
 
+    - name: Copy /opt/myapp to backup
+      copy:
+        src: /opt/myapp/
+        dest: /backup//myapp_copy
+        
     - name: Copy /opt/myapp to ansible-1
       ansible.builtin.synchronize:
-        src: /opt/myapp/
+        src: /backup/myapp_copy
         dest: /backup/myapp_copy/
-        mode: pull
-        delete: yes
+       
 
     
