@@ -1,0 +1,28 @@
+---
+- name: Backup files to remote server
+  hosts: node1
+  gather_facts: false
+
+  vars:
+    backup_dir: /opt/myapp
+    local_dir: /bakcup
+    remote_dir: /bacup_remote
+    remote_server: node2
+
+  tasks:
+    - name: Create backup directory if not exist
+      file:
+        path: "{{ backup_dir }}"
+        state: directory
+
+    - name: Create local archive
+      archive:
+        path: "{{ local_dir }}"
+        dest: "{{ backup_dir }}/backup-{{ ansible_date_time.iso8601 }}.tar.gz"
+        format: gz
+
+    - name: Copy archive to remote server
+      copy:
+        src: "{{ backup_dir }}/backup-{{ ansible_date_time.iso8601 }}.tar.gz"
+        dest: "{{ remote_dir }}/backup-{{ ansible_date_time.iso8601 }}.tar.gz"
+      delegate_to: "{{ remote_server }}"
