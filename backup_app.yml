@@ -8,14 +8,12 @@
         state: directory
 
     - name: Copy /opt/myapp to backup
-      copy:
+      fetch:
         src: /opt/myapp/
         dest: /backup//myapp_copy
+        flat: yes
         
-    - name: Copy /opt/myapp to ansible-1
-      ansible.builtin.synchronize:
-        src: /backup/myapp_copy
-        dest: /backup/myapp_copy/
+  
        
 
     
