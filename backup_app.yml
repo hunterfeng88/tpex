@@ -12,9 +12,8 @@
       copy:
         src: /backup/myapp.tar.gz
         dest: /home/student/backup
-        remote_src: yes
         delegate_to: ansible-1
-
+        remote_src: yes
         
   
        
