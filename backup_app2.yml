@@ -18,11 +18,11 @@
     - name: Create local archive
       archive:
         path: "{{ local_dir }}"
-        dest: "{{ backup_dir }}/backup-{{ ansible_date_time.iso8601 }}.tar.gz"
+        dest: "{{ backup_dir }}/backup.tar.gz"
         format: gz
 
     - name: Copy archive to remote server
       copy:
-        src: "{{ backup_dir }}/backup-{{ ansible_date_time.iso8601 }}.tar.gz"
-        dest: "{{ remote_dir }}/backup-{{ ansible_date_time.iso8601 }}.tar.gz"
+        src: "{{ backup_dir }}/backup.tar.gz"
+        dest: "{{ remote_dir }}/backup.tar.gz"
       delegate_to: "{{ remote_server }}"
