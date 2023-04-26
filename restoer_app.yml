@@ -32,4 +32,4 @@
         src: "{{ local_dir }}/myappbackup.tar.gz"
         dest: "{{ local_dir }}"
         remote_src: yes
-      delegate_to: "{{ node1 }}"
+   
