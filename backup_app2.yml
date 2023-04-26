@@ -4,8 +4,8 @@
   gather_facts: false
 
   vars:
-    backup_dir: /opt/myapp
-    local_dir: /bakckup
+    backup_dir: /backup
+    local_dir: /opt/myapp
     remote_dir: /backup_remote
     remote_server: node2
 
