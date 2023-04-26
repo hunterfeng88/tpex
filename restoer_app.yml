@@ -18,6 +18,6 @@
     - name: Copy archive from ansible-1 to remote server
       fetch:
         src: /home/student/backup/myappbackup.tar.gz
-        dest: "{{ local_dir }}"/myappbackup.tar.gz
+        dest: "{{ local_dir }}/myappbackup.tar.gz"
         flat: yes
-      delegate_to: "{{ remote_server }}
+      delegate_to: "{{ remote_server }}"
