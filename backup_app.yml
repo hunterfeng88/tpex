@@ -9,10 +9,11 @@
         format: gz
 
     - name: Copy /opt/myapp to backup
-      copy:
+      synchronize:
         src: /backup/myapp.tar.gz
         dest: /home/student/backup
-        delegate_to: node1
+        mode: pull
+        delegate_to: ansible-1
 
         
   
