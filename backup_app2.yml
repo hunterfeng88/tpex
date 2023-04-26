@@ -7,7 +7,7 @@
     backup_dir: /backup
     local_dir: /opt/myapp
     remote_dir: /backup_remote
-    remote_server: node2
+    remote_server: 172.16.210.197
 
   tasks:
     - name: Create backup directory if not exist
