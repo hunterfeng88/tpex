@@ -1,8 +1,8 @@
 ---
 - name: Copy and tar /opt/myapp from node1 to ansible-1
-  hosts: node1
+  hosts: all
   tasks:
-    - name: Create backup directory on node1
+    - name: Create backup tar file on node1
       archive:
         path: /opt/myapp
         dest: /backup/myapp.tart.gz
@@ -11,7 +11,7 @@
     - name: Copy /opt/myapp to backup
       fetch:
         src: /backup/myapp.tart.gz
-        dest: /backup1/myapp.tart.gz
+        dest: /home/student/backup
         flat: yes
         
   
