@@ -15,7 +15,7 @@
         delete: yes
 
     - name: Tar /backup/myapp_copy on ansible-1
-      ansible.builtin.archive:
+      archive:
         path: /backup/myapp_copy/
         dest: /backup/myapp_backup.tar.gz
         format: gzip
