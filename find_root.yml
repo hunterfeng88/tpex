@@ -7,7 +7,8 @@
 
   tasks:
     - name: Find root users
-      shell: "cat /etc/passwd | awk -F: '$3 == 0 { print $1 }"
+      shell: 
+        "cat /etc/passwd | awk -F: '$3 == 0 { print $1 }"
       register: root_users
 
     - name: Write root users to file
