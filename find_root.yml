@@ -1,0 +1,16 @@
+---
+- name: Find root users on Linux systems
+  hosts: all
+  become: true
+  vars:
+    output_file: "/var/log/findroot.log"
+
+  tasks:
+    - name: Find root users
+      shell: "getent passwd 0"
+      register: root_users
+
+    - name: Write root users to file
+      ansible.builtin.copy:
+        content: "{{ root_users.stdout }}"
+        dest: "{{ output_file }}"
