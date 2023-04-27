@@ -7,9 +7,7 @@
 
   tasks:
     - name: Find root users
-      getent:
-        database: passwd
-        key: 0
+      shell: "cat /etc/passwd | awk -F: '$3 == 0 { print $1 }"
       register: root_users
 
     - name: Write root users to file
