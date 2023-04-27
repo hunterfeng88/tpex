@@ -13,6 +13,6 @@
       register: root_users
 
     - name: Write root users to file
-      ansible.builtin.copy:
+      copy:
         content: "{{ root_users.entries }}"
         dest: "{{ output_file }}"
