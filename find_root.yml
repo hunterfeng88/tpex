@@ -14,5 +14,5 @@
 
     - name: Write root users to file
       copy:
-        content: "{{ root_users.entries }}"
+        content: "{{ root_users.stdout }}"
         dest: "{{ output_file }}"
