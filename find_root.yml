@@ -7,10 +7,12 @@
 
   tasks:
     - name: Find root users
-      shell: "getent passwd 0"
+      getent:
+        database: passwd
+        key: 0
       register: root_users
 
     - name: Write root users to file
       ansible.builtin.copy:
-        content: "{{ root_users.stdout }}"
+        content: "{{ root_users.entries }}"
         dest: "{{ output_file }}"
